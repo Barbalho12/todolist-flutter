@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class Api {
   // static final PATH = "https://tdl-backend.herokuapp.com/tasks/";
-  static final PATH = "http://10.40.1.57:8080/tasks/";
+  static final PATH = "http://10.40.1.57:8080/tasks";
 
   static Future findAll() async {
     http.Response response = await http.get("${Api.PATH}");
@@ -18,6 +18,12 @@ class Api {
 
   static Future findAllLefts() async {
     http.Response response = await http.get("${Api.PATH}/lefts");
+    return json.decode(response.body);
+  }
+
+  static Future setCompleted(id, isCompleted) async {
+    http.Response response =
+        await http.put("${Api.PATH}/$id/set-completed/$isCompleted");
     return json.decode(response.body);
   }
 

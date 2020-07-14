@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'api.dart';
 
@@ -31,9 +29,10 @@ class _TaskItemState extends State<TaskItem> {
                   : TextDecoration.none)),
       subtitle: widget._task["creationDate"],
       onTap: () {
-        Api.complete(widget._task["id"]).then((response) {
+        var newState = !widget._task["completed"];
+        Api.setCompleted(widget._task["id"], newState).then((response) {
           setState(() {
-            widget._task["completed"] = !widget._task["completed"];
+            widget._task["completed"] = newState;
           });
         });
       },
