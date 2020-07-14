@@ -31,7 +31,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'sddsd',
-      theme: ThemeData(primaryColor: Colors.teal, fontFamily: "Google Sans"),
+      theme: ThemeData(primaryColor: Colors.grey, fontFamily: "Google Sans"),
       home: Scaffold(
         appBar: AppBar(
           title: Text("TODO List"),
@@ -53,25 +53,29 @@ class MyAppState extends State<MyApp> {
             ),
             Row(children: <Widget>[
               Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: RaisedButton(
-                color: Colors.teal,
-                child: Text("ADICIONAR"),
-                textColor: Colors.white,
-                onPressed: () {
-                  if (_todoController.text != "") {
-                    setState(() {
-                      _loading = true;
-                    });
-                    Api.create(_todoController.text).then((map) {
-                      setState(() {
-                        _loading = false;
-                        tasks.add(map);
-                        _todoController.text = "";
-                      });
-                    });
-                  }
-                },
-              ))
+                    color: Colors.teal,
+                    child: Text("ADICIONAR"),
+                    textColor: Colors.white,
+                    onPressed: () {
+                      if (_todoController.text != "") {
+                        setState(() {
+                          _loading = true;
+                        });
+                        Api.create(_todoController.text).then((map) {
+                          setState(() {
+                            _loading = false;
+                            tasks.add(map);
+                            _todoController.text = "";
+                          });
+                        });
+                      }
+                    },
+                  ),
+                ),
+              )
             ]),
             _loading
                 ? Container(
@@ -98,15 +102,15 @@ class MyAppState extends State<MyApp> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.list),
                   title: Text('Todas'),
-                  backgroundColor: Colors.teal),
+                  backgroundColor: Colors.grey),
               BottomNavigationBarItem(
                   icon: Icon(Icons.access_time),
                   title: Text('Pendentes'),
-                  backgroundColor: Colors.teal),
+                  backgroundColor: Colors.grey),
               BottomNavigationBarItem(
                   icon: Icon(Icons.done_all),
                   title: Text('Finalizadas'),
-                  backgroundColor: Colors.teal)
+                  backgroundColor: Colors.grey)
             ]),
       ),
     );

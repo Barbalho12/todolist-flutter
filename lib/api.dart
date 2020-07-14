@@ -29,7 +29,7 @@ class Api {
   }
 
   static Future complete(id) async {
-    http.Response response = await http.put("${Api.PATH}/$id");
+    http.Response response = await http.put("${Api.PATH}/complete/$id");
     return response;
   }
 

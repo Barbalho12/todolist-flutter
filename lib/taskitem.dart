@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'api.dart';
 
@@ -17,10 +19,30 @@ class TaskItem extends StatefulWidget {
 class _TaskItemState extends State<TaskItem> {
   @override
   Widget build(BuildContext context) {
+    var item = ListTile(
+      leading: CircleAvatar(
+          child: Icon(widget._task["completed"] ? Icons.check : null),
+          backgroundColor:
+              widget._task["completed"] ? Colors.teal : Colors.transparent),
+      title: Text(widget._task["description"],
+          style: TextStyle(
+              decoration: widget._task["completed"]
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none)),
+      subtitle: widget._task["creationDate"],
+      onTap: () {
+        Api.complete(widget._task["id"]).then((response) {
+          setState(() {
+            widget._task["completed"] = !widget._task["completed"];
+          });
+        });
+      },
+    );
+
     return Dismissible(
         key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
         background: Container(
-          color: Colors.red,
+          color: Colors.orangeAccent,
           child: Align(
             alignment: Alignment(-0.9, 0.0),
             child: Icon(
@@ -33,19 +55,6 @@ class _TaskItemState extends State<TaskItem> {
         onDismissed: (direction) {
           Api.delete(widget._task["id"]).then((response) {});
         },
-        child: CheckboxListTile(
-          title: Text(widget._task["description"]),
-          value: widget._task["completed"],
-          onChanged: (done) {
-            Api.update(widget._task["id"], widget._task).then((response) {
-              setState(() {
-                widget._task["completed"] = !widget._task["completed"];
-              });
-            });
-          },
-          secondary: CircleAvatar(
-              child: Icon(widget._task["completed"] ? Icons.check : null),
-              backgroundColor: Colors.transparent),
-        ));
+        child: item);
   }
 }
