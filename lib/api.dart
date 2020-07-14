@@ -11,6 +11,16 @@ class Api {
     return json.decode(response.body);
   }
 
+  static Future findAllCompleteds() async {
+    http.Response response = await http.get("${Api.PATH}/completeds");
+    return json.decode(response.body);
+  }
+
+  static Future findAllLefts() async {
+    http.Response response = await http.get("${Api.PATH}/lefts");
+    return json.decode(response.body);
+  }
+
   static Future create(taskDescription) async {
     var taskJson = json.encode({"description": taskDescription});
     var contentType = {"Content-type": "application/json"};

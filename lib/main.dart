@@ -39,7 +39,7 @@ class MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(10.0, 1.0, 10.0, 1.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -94,9 +94,43 @@ class MyAppState extends State<MyApp> {
             currentIndex: _selectedPage,
             onTap: (int index) {
               setState(() {
-                _selectedPage = index;
-                _todoController.text = "";
+                _loading = true;
               });
+              switch (index) {
+                case 0:
+                  {
+                    Api.findAll().then((response) => {
+                          setState(() {
+                            _selectedPage = index;
+                            tasks = response;
+                            _loading = false;
+                          })
+                        });
+                  }
+                  break;
+                case 1:
+                  {
+                    Api.findAllLefts().then((response) => {
+                          setState(() {
+                            _selectedPage = index;
+                            tasks = response;
+                            _loading = false;
+                          })
+                        });
+                  }
+                  break;
+                case 2:
+                  {
+                    Api.findAllCompleteds().then((response) => {
+                          setState(() {
+                            _selectedPage = index;
+                            tasks = response;
+                            _loading = false;
+                          })
+                        });
+                  }
+                  break;
+              }
             },
             items: [
               BottomNavigationBarItem(
