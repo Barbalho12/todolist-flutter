@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   int _selectedPage = 0;
   var tasks = [];
-  final _todoController = TextEditingController();
+  final _inputTask = TextEditingController();
   var _loading = true;
 
   @override
@@ -30,7 +30,8 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'sddsd',
+      title: 'TODO List',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.grey, fontFamily: "Google Sans"),
       home: Scaffold(
         appBar: AppBar(
@@ -44,7 +45,7 @@ class MyAppState extends State<MyApp> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      controller: _todoController,
+                      controller: _inputTask,
                       decoration: InputDecoration(labelText: "Nova tarefa"),
                     ),
                   )
@@ -60,15 +61,15 @@ class MyAppState extends State<MyApp> {
                     child: Text("ADICIONAR"),
                     textColor: Colors.white,
                     onPressed: () {
-                      if (_todoController.text != "") {
+                      if (_inputTask.text != "") {
                         setState(() {
                           _loading = true;
                         });
-                        Api.create(_todoController.text).then((map) {
+                        Api.create(_inputTask.text).then((map) {
                           setState(() {
                             _loading = false;
                             tasks.add(map);
-                            _todoController.text = "";
+                            _inputTask.text = "";
                           });
                         });
                       }

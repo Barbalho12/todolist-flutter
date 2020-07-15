@@ -27,7 +27,7 @@ class _TaskItemState extends State<TaskItem> {
               decoration: widget._task["completed"]
                   ? TextDecoration.lineThrough
                   : TextDecoration.none)),
-      subtitle: widget._task["creationDate"],
+      // subtitle: Text(widget._task["creationDate"] ?? ''),
       onTap: () {
         var newState = !widget._task["completed"];
         Api.setCompleted(widget._task["id"], newState).then((response) {

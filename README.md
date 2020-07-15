@@ -1,16 +1,34 @@
-# todolistapp
+# TODO List - Flutter
 
-A new Flutter project.
+<p align="center"><img src="doc/print-tela.png" width="400px"/></p>
 
-## Getting Started
+O apk está diposnível no endereço `ADICIONAR_APK` 
 
-This project is a starting point for a Flutter application.
+### Dependêcnias
 
-A few resources to get you started if this is your first Flutter project:
+* [todolist-backend](https://github.com/Barbalho12/todolist-backend) - Backend do sistema
+* [Git](https://git-scm.com/downloads)
+* [Android Studio](https://developer.android.com/studio/install)
+* [Flutter](https://flutter.dev/docs/get-started/install)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Executando localmente
+
+Clone o projeto
+```bash
+git clone https://github.com/Barbalho12/todolist-flutter.git
+```
+
+Acesse o diretório do projeto
+```bash
+cd todolist-flutter
+```
+
+Veja os passos para execução no VS code no [Tutorial](https://flutter.dev/docs/get-started/test-drive?tab=vscode)
+
+> **Observação em ambiente local:** configure corretamente o endereço do backend em `lib/api.dart`
+
+### Outros Projetos
+
+- [Backend](https://github.com/Barbalho12/todolist-backend)
+- [React](https://github.com/Barbalho12/todolist-spa)
