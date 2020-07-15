@@ -2,7 +2,7 @@
 
 <p align="center"><img src="doc/print-tela.png" width="400px"/></p>
 
-O apk está diposnível no endereço `ADICIONAR_APK` 
+O apk está diposnível na versão [v0.1-alpha](https://github.com/Barbalho12/todolist-flutter/releases/download/v0.1-alpha/app-release.apk) 
 
 ### Dependêcnias
 
