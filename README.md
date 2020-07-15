@@ -1,6 +1,6 @@
 # TODO List - Flutter
 
-<p align="center"><img src="doc/print-tela.png" width="400px"/></p>
+<p align="center"><img src="doc/sample.gif" width="300px"/></p>
 
 O apk está diposnível na versão [v0.1-alpha](https://github.com/Barbalho12/todolist-flutter/releases/download/v0.1-alpha/app-release.apk) 
 
